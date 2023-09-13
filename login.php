@@ -2,7 +2,7 @@
 session_start();
 
 $max_attempts = 3;
-$block_duration = 15;
+$block_duration = 10;
 
 //Brute Force
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
