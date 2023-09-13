@@ -4,8 +4,8 @@ session_start();
 $max_attempts = 3;
 $block_duration = 15;
 
+//Brute Force
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Brute Force
     if (isset($_SESSION['block_start_time']) && time() - $_SESSION['block_start_time'] < $block_duration) {
         $remaining_time = $block_duration - (time() - $_SESSION['block_start_time']);
         $error_message = "Too many login attempts. Please try again in " . $remaining_time . " seconds.";
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Lec-Page</title>
     <style>
@@ -106,9 +106,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="container">
     <h2>Please Enter Your Password</h2>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> //XSS prevention
-        <label for="password"></label>
-        <input type="password" name="password" placeholder="Password" maxlength="3" minlength="3" required>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> <!--XSS prevention-->
+        <label for="password"> <input type="password" name="password" placeholder="Password" maxlength="3" minlength="3"
+                                      required></label>
         <input type="submit" value="login">
     </form>
 </div>
